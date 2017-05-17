@@ -1,0 +1,6 @@
+[
+    {
+        "command": "super_elixir_goto",
+        "caption": "Go to Definition (Elixir)"
+    },
+]

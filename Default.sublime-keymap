@@ -1,0 +1,16 @@
+[
+    {"command": "super_elixir_goto", "keys": ["ctrl+shift+g"],
+        "context": [
+            {"key": "selector", "operator": "equal", "operand":  "source.elixir - string - comment"}
+        ]
+    },
+    {
+        "caption": "Elixir: Navigate modules",
+        "command": "super_elixir_navigate_modules",
+        "keys": ["ctrl+shift+l"],
+        "context": [
+            {"key": "selector", "operator": "equal", "operand":  "source.elixir - string - comment"}
+        ]
+    },
+
+]
