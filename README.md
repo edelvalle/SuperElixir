@@ -31,6 +31,76 @@ Additional info installations you can find here [http://wbond.net/sublime_packag
 
 Make sure you have at least Elixir 2.4.4 installed.
 
+### Elixir interpreter settings
+
+By default this package will use default Elixir interpreter from the `PATH`.
+Also you can set different interpreter for each Sublime Project.
+
+To set project related Elixir interpreter you have to edit yours project config file.
+By default project config name is `<project name>.sublime-project`
+
+You can set Elixir interpreter, using for example the following:
+
+    # <project name>.sublime-project
+    {
+        // ...
+
+        "settings": {
+            // ...
+            "elixir_interpreter": "~/elixir-2.4.4/bin/elixir",
+        }
+    }
+
+### Autocomplete on DOT
+
+If you want auto-completion on dot, you can define a trigger in the
+Sublime User or Python preferences:
+
+    # User/Preferences.sublime-settings or User/Elixir.sublime-settings
+    {
+        // ...
+        "auto_complete_triggers": [{"selector": "source.elixir", "characters": "."}],
+    }
+
+If you want auto-completion **ONLY** on dot and not while typing, you can
+set (additionally to the trigger above):
+
+
+    # User/Preferences.sublime-settings or User/Elixir.sublime-settings
+    {
+        // ...
+        "auto_complete_selector": "-",
+    }
+
+### Go to definition
+
+Find function / variable / module definition / anything else.
+
+Shortcuts: `CTRL+SHIFT+G`
+
+Mouse binding, was disabled, because sublime does not allows to set a scope so is active just in Elixir source files, and this can interfere with the global SublimeText configuration. But, if you want to use your mouse you can bind `CTRL + LeftMouseButton`:
+
+    # User/Default.sublime-mousemap
+    [
+        {
+            "modifiers": ["ctrl"], "button": "button1",
+            "command": "super_elixir_goto",
+            "press_command": "drag_select",
+        }
+    ]
+
+
+### Code navigation
+
+As Elixir code is structured as a set of hierarchical modules this feature lists all loaded modules and allows you to select one of them an go to it.
+
+Shortcuts: `CTRL+SHIFT+L`
+
+#### Show types and documentation
+
+Just put your mouse on top of the term and you want documentation about. If it is a function it will list types first and then the documentation. It is not very pretty, we are working on it.
+
+
 ## Special thanks
 
 - Elixir Sense: provides the Elixir introspection capabilities.
