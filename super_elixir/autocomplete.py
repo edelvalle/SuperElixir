@@ -37,7 +37,7 @@ class Autocomplete(sublime_plugin.EventListener):
                 'completion': s['name'],
             }
 
-            if s['type'].endswith('function'):
+            if s['type'].endswith('function') or s['type'] == 'macro':
                 args = s.get('args', '')
                 arity = s.get('arity')
                 if args:
