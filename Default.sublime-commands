@@ -1,0 +1,4 @@
+[
+    { "caption": "Elixir: Navigate through modules", "command": "super_elixir_navigate_modules" },
+    { "caption": "Elixir: Go to definition", "command": "super_elixir_goto" },
+]
