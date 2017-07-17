@@ -94,7 +94,7 @@ Mouse binding, was disabled, because sublime does not allows to set a scope so i
 
 As Elixir code is structured as a set of hierarchical modules this feature lists all loaded modules and allows you to select one of them an go to it.
 
-Shortcuts: `CTRL+SHIFT+L`
+Shortcuts: `CTRL+ALT+M`
 
 #### Show types and documentation
 
