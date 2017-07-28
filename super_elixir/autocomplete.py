@@ -2,6 +2,7 @@ import re
 
 import sublime
 import sublime_plugin
+
 from .utils import is_elixir, get_buffer_line_column
 from .sense_client import get_elixir_sense
 
@@ -16,9 +17,6 @@ class Autocomplete(sublime_plugin.EventListener):
 
         sense = get_elixir_sense(view)
         suggestions = sense.suggestions(buffer, line, column)
-
-        # from pprint import pprint
-        # pprint(suggestions)
 
         completions = []
         for s in suggestions:
@@ -58,10 +56,18 @@ class Autocomplete(sublime_plugin.EventListener):
 
             completions.append(c)
 
+        completions = self._sort_by_frequency_in_view(buffer, completions)
         completions = [
             ['{show}\t{hint}'.format(**c), c['completion']]
             for c in completions
         ]
+        return completions
+
+    def _sort_by_frequency_in_view(self, buffer, completions):
+        for completion in completions:
+            completion['count'] = buffer.count(completion['name'])
+
+        completions.sort(key=lambda c: (-c['count'], c['name']))
         return completions
 
     def on_hover(self, view, point, hover_zone):
@@ -70,9 +76,6 @@ class Autocomplete(sublime_plugin.EventListener):
             buffer, line, column = get_buffer_line_column(view, point)
             sense = get_elixir_sense(view)
             docs = sense.docs(buffer, line, column)
-
-            # from pprint import pprint
-            # pprint(docs)
 
             types = docs['docs']['types']
             types = ''.join(re.compile(r'`([^`]+)`').findall(types))
