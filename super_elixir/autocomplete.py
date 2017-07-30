@@ -64,10 +64,11 @@ class Autocomplete(sublime_plugin.EventListener):
         return completions
 
     def _sort_by_frequency_in_view(self, buffer, completions):
-        for completion in completions:
-            completion['count'] = buffer.count(completion['name'])
-
-        completions.sort(key=lambda c: (-c['count'], c['name']))
+        completions.sort(key=lambda c: (
+            -buffer.count(c['name']),
+            len(c['name']) - len(c['name'].strip('_')),
+            c['name'],
+        ))
         return completions
 
     def on_hover(self, view, point, hover_zone):
