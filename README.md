@@ -111,7 +111,7 @@ Just put your mouse on top of the term and you want documentation about. If it i
 
 ## Room for improvement
 
-- How documentation is shown. Right now is just shown in plain text and is kind of ugly, I think we should  use a markdown renderer for Sublime like [Sublime Markdown Popups](https://github.com/facelessuser/sublime-markdown-popups/).
+- How documentation is shown. Right now is just shown in plain text and is kind of ugly, I think we should  use a markdown renderer for Sublime like [Sublime Markdown Pop-ups](https://github.com/facelessuser/sublime-markdown-popups/).
 - Improve the linting, so it just does not work on safe but in real-time typing.
 - When sublime includes scopes in mouse map maybe we can have Ctrl-Click to go to definitions.
 - Support Windows. Right now the communication with Elixir Sense is over Unix sockets; and Windows can't do that. But.. who writes Elixir in Windows any way? :trollface:
