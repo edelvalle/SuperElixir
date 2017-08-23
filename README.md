@@ -29,7 +29,7 @@ Additional info installations you can find here [http://wbond.net/sublime_packag
 
 ## Configuration
 
-Make sure you have at least Elixir 2.4.4 installed.
+Make sure you have at least Elixir 1.4.4 installed.
 
 ### Elixir interpreter settings
 
