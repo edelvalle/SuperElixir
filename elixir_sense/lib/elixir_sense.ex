@@ -63,7 +63,7 @@ defmodule ElixirSense do
       ...> '''
       iex> {path, line} = ElixirSense.definition(code, 3, 11)
       iex> "#{Path.basename(path)}:#{to_string(line)}"
-      "enum.ex:2523"
+      "enum.ex:2576"
   """
   @spec definition(String.t, pos_integer, pos_integer) :: Definition.location
   def definition(code, line, column) do
@@ -87,10 +87,10 @@ defmodule ElixirSense do
       [":application", ":application_controller", ":application_master", ":application_starter"]
 
       iex> ElixirSense.all_modules() |> Enum.take(-4)
-      ["Version.Parser", "Version.Parser.DSL", "Version.Requirement", "WithClauseError"]
+      ["Version.InvalidVersionError", "Version.Parser", "Version.Requirement", "WithClauseError"]
 
   """
-  def all_modules() do
+  def all_modules do
     Introspection.all_modules()
     |> Enum.map(&Atom.to_string(&1))
     |> Enum.map(fn x -> if String.downcase(x) == x do ":" <> x else x end end)

@@ -43,7 +43,14 @@ defmodule ElixirSense.Server.RequestHandler do
   end
 
   def handle_request("set_context", %{"env" => env, "cwd" => cwd}) do
-    ContextLoader.set_context(env, cwd) |> Tuple.to_list
+    env |> ContextLoader.set_context(cwd) |> Tuple.to_list()
+  end
+
+  def handle_request("version", %{}) do
+    %{
+      elixir: System.version,
+      otp: System.otp_release
+    }
   end
 
   def handle_request(request, payload) do
