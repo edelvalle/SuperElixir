@@ -16,8 +16,6 @@ class Autocomplete(sublime_plugin.EventListener):
         if not is_elixir(view):
             return
 
-        print(prefix, locations)
-
         buffer, line, column = get_buffer_line_column(view, locations[0])
 
         sense = get_elixir_sense(view)
@@ -160,10 +158,8 @@ class SuperElixirParamsAutocomplete(sublime_plugin.TextCommand):
             next_char = self.view.substr(region.begin())
             # replace null byte to prevent error
             next_char = next_char.replace('\x00', '\n')
-            print("Next characters: {0}".format(next_char))
 
             following_text = next_char not in FOLLOWING_CHARS
-            print("Following text: {0}".format(following_text))
 
             if self.auto_match_enabled:
                 self.view.insert(edit, region.begin(), open_pair)
