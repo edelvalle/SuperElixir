@@ -1,8 +1,9 @@
 
 # SuperElixir
 
-This is a sublime plug-in that provide IDE like capabilities to sublime when working with the Elixir language. It does not include the syntax highlighting, please install the package (Elixir)[https://packagecontrol.io/packages/Elixir]
+This is a sublime plug-in that provide IDE like capabilities to sublime when working with the Elixir language. It does not include the syntax highlighting, please install the package [Elixir](https://packagecontrol.io/packages/Elixir)
 
+**[Donate for the cause](https://www.paypal.me/EddydelValle/5)**
 
 ## Features
 
