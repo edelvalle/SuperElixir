@@ -13,5 +13,12 @@
             {"key": "selector", "operator": "equal", "operand":  "source.elixir - string - comment"}
         ]
     },
+    {
+        "command": "super_elixir_params_autocomplete",
+        "keys": ["("],
+        "context": [
+            {"key": "selector", "operator": "equal", "operand":  "source.elixir - string - comment"}
+        ]
+    },
 
 ]
