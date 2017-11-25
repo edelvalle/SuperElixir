@@ -17,7 +17,7 @@ class Autocomplete(sublime_plugin.EventListener):
             return
 
         location = locations[0]
-        on_character =  view.substr(location)
+        on_character = view.substr(location)
         prev_char = view.substr(location - 1)
 
         param_auto_completion = (
@@ -55,7 +55,7 @@ class Autocomplete(sublime_plugin.EventListener):
 
             if self._is_function(s):
                 arity = s.get('arity')
-                args = s.get('args', '').split()
+                args = s.get('args', '').split(',')
 
                 if not args and arity:
                     args = ['_'] * arity
@@ -73,11 +73,20 @@ class Autocomplete(sublime_plugin.EventListener):
 
             completions.append(c)
 
+        completions.sort(key=lambda c: (
+            len(c['name']) - len(c['name'].strip('_')),  # less underscores wins
+            c['name'],  # alphabetically
+        ))
+
         completions = [
             ['{show}\t{hint}'.format(**c), c['completion']]
             for c in completions
         ]
-        return completions
+        return (
+            completions,
+            sublime.INHIBIT_WORD_COMPLETIONS |
+            sublime.INHIBIT_EXPLICIT_COMPLETIONS
+        )
 
     def _is_function(self, suggestion):
         return (
