@@ -1,7 +1,5 @@
 {
-    // Used to get the `PYTHONPATH`.
-    // You can set a path to your python interpreter,
-    // for example `/home/user/.virtualenvs/myenv/bin/python)`.
+    // Where is the elixir command located.
     "elixir_interpreter": "elixir",
 
     // "debug", "error", "info", "warn"

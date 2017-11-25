@@ -171,7 +171,6 @@ class ElixirSense:
         return self._send_request('set_context', env=env, cwd=cwd)
 
 
-
 # code = """
 # defmodule MyModule do
 #   alias List, as: MyList
