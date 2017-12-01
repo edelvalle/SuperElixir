@@ -30,7 +30,7 @@ def is_elixir(view):
     return view.file_name() and (
         view.file_name().endswith('.ex') or
         view.file_name().endswith('.exs')
-    )
+    ) or False
 
 
 class ElixirCommandMixin(object):
