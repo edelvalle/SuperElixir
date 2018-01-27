@@ -3,7 +3,7 @@
     "elixir_interpreter": "elixir",
 
     // "dev", "test", "prod"
-    "mix_env": "dev",
+    "mix_env": "test",
 
     // how to open goto definition result with ability to show it transient
     // variation (preview only. it won't have a tab assigned it until modified):

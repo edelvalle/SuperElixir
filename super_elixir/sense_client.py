@@ -53,21 +53,21 @@ def get_elixir_sense(view):
                 'elixir_interpreter',
                 'elixir'
             )
-            elixir_env = settings.get_settings_param(
+            mix_env = settings.get_settings_param(
                 view,
-                'elixir_interpreter',
-                'dev'
+                'mix_env',
+                'test'
             ).lower()
             sense = SERVERS[project_path] = ElixirSense(
                 project_path,
                 elixir_exec=elixir_exec,
-                elixir_env=elixir_env,
+                mix_env=mix_env,
             )
         return sense
 
 
 class ElixirSense:
-    def __init__(self, project_path, elixir_exec='elixir', mix_env='dev'):
+    def __init__(self, project_path, elixir_exec='elixir', mix_env='test'):
         self.project_path = project_path
         self.elixir_exec = elixir_exec
         self.mix_env = mix_env
