@@ -2,8 +2,8 @@
     // Where is the elixir command located.
     "elixir_interpreter": "elixir",
 
-    // "debug", "error", "info", "warn"
-    "logging_level": "warn",
+    // "dev", "test", "prod"
+    "mix_env": "dev",
 
     // how to open goto definition result with ability to show it transient
     // variation (preview only. it won't have a tab assigned it until modified):

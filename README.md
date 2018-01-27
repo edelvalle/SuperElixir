@@ -35,12 +35,14 @@ Make sure you have at least Elixir 1.4.4 installed.
 ### Elixir interpreter settings
 
 By default this package will use default Elixir interpreter from the `PATH`.
-Also you can set different interpreter for each Sublime Project.
+Also you can set different interpreter for each Sublime Project and the the mix
+environment will be set to `MIX_ENV=dev`. You can change this.
 
-To set project related Elixir interpreter you have to edit yours project config file.
-By default project config name is `<project name>.sublime-project`
+To set project related Elixir interpreter you have to edit yours project config
+file. By default project config name is `<project name>.sublime-project`
 
-You can set Elixir interpreter, using for example the following:
+You can set Elixir interpreter and mix environment, using for example the
+following:
 
     # <project name>.sublime-project
     {
@@ -49,6 +51,7 @@ You can set Elixir interpreter, using for example the following:
         "settings": {
             // ...
             "elixir_interpreter": "~/elixir-2.4.4/bin/elixir",
+            "mix_env": "test",
         }
     }
 
