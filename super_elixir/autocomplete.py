@@ -27,19 +27,25 @@ class Autocomplete(sublime_plugin.EventListener):
 
         if param_auto_completion:
             location -= 1
+            prefix = view.substr(view.word(location))
 
-        f_name = view.substr(view.word(location))
         buffer, line, column = get_buffer_line_column(view, location)
 
         sense = get_elixir_sense(view)
         suggestions = sense.suggestions(buffer, line, column)
 
         completions = []
+        hint = ''
         for s in suggestions:
-            if (s['type'] == 'hint' or
-                    param_auto_completion and
-                    s['name'] != f_name):
+            if s['type'] == 'hint':
+                hint = s['value']
                 continue
+
+            if param_auto_completion and s['name'] != prefix:
+                continue
+
+            if hint.startswith(s['name']):
+                s['name'] = hint
 
             c = {
                 'name': s['name'],
