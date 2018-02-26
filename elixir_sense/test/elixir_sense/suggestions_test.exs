@@ -120,7 +120,7 @@ defmodule ElixirSense.SuggestionsTest do
     assert list == [%{
       args: "old_vsn,state,extra", arity: 3, name: :code_change,
       origin: "GenServer",
-      spec: "@callback code_change(old_vsn, state :: term, extra :: term) ::\n  {:ok, new_state :: term} |\n  {:error, reason :: term} when old_vsn: term | {:down, term}\n",
+      spec: "@callback code_change(old_vsn, state :: term, extra :: term) ::\n  {:ok, new_state :: term} |\n  {:error, reason :: term} |\n  {:down, term} when old_vsn: term\n",
       summary: "Invoked to change the state of the `GenServer` when a different version of a\nmodule is loaded (hot code swapping) and the state's term structure should be\nchanged.",
       type: :callback
     }]
@@ -225,6 +225,20 @@ defmodule ElixirSense.SuggestionsTest do
 
     assert Enum.at(list,0) == %{type: :hint, value: "Elixir"}
     assert Enum.at(list,1) == %{type: :module, name: "Elixir", subtype: nil, summary: ""}
+  end
+
+  test "suggestion for aliases modules defined by require clause" do
+
+    buffer =
+      """
+      defmodule Mod do
+        require Integer, as: I
+        I.is_o
+      end
+      """
+
+    list = ElixirSense.suggestions(buffer, 3, 9)
+    assert Enum.at(list,1).name == "is_odd"
   end
 
 end

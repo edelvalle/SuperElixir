@@ -336,6 +336,21 @@ defmodule ElixirSense.Core.MetadataBuilderTest do
     assert get_line_aliases(state, 3) == [{Email, Foo.Email}, {User, Foo.User}]
   end
 
+  test "aliases defined with v1.2 notation (multiline)" do
+
+    state =
+      """
+      defmodule A do
+        alias A.{
+          B
+        }
+      end
+      """
+      |> string_to_state
+
+    assert get_line_aliases(state, 3) == [{B, A.B}]
+  end
+
   test "aliases without options" do
 
     state =
@@ -426,6 +441,21 @@ defmodule ElixirSense.Core.MetadataBuilderTest do
       |> string_to_state
 
     assert get_line_requires(state, 3)  == [Mod.Mod2, Mod.Mo1]
+  end
+
+  test "requires with :as option" do
+
+    state =
+      """
+      defmodule MyModule do
+        require Integer, as: I
+        IO.puts ""
+      end
+      """
+      |> string_to_state
+
+    assert get_line_requires(state, 3)  == [Integer]
+    assert get_line_aliases(state, 3)  == [{I, Integer}]
   end
 
   test "current module" do
